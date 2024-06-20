@@ -4,6 +4,7 @@ prisma init: `npx prisma init --datasource-provider postgresql `
 
 Email Service : http://localhost:8025/
 PgAdmin: http://localhost:5050/browser/
+Redis Stack: http://localhost:8002/redis-stack/browser
 
 
 Service

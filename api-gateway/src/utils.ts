@@ -2,7 +2,6 @@ import axios from "axios";
 import { Express, Request, Response } from "express";
 import config from "./config.json";
 import middlewares from "./middlewares";
-import { log } from "console";
 
 export const createHandler = (
   hostname: string,
@@ -17,13 +16,14 @@ export const createHandler = (
           url = url.replace(`:${param}`, req.params[param]);
         });
       const queryParams = req.query;
-	  
+
       const { data } = await axios({
         method,
         url,
         params: queryParams,
         data: req.body,
         headers: {
+          "x-cart-session-id": req.headers["x-cart-session-id"] || "",
           origin: "http://localhost:8081",
           "x-user-id": req.headers["x-user-id"] || "",
           "x-user-email": req.headers["x-user-email"] || "",
